@@ -1,0 +1,576 @@
+<!-- index.html -->
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>DatabaseVisualizer</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../database-visualizer-app.html">
+</head>
+
+<body>
+<!-- <button id="load">load</button> -->
+<database-visualizer-app/>
+</body>
+<script>
+
+        setTimeout(function () {
+            document.querySelector('database-visualizer-app').schemas = JSON.parse('[{"id":1,"name":"DEMO"},{"id":2,"name":"DV_SHOWCASE"}]');
+        }, 2000);
+
+        document.querySelector('database-visualizer-app').addEventListener('schema-selected', function (e) {
+            var schemaId = e.detail.schemaid
+            console.log("selected schema: " + schemaId);
+
+            setTimeout(function () {
+                /** id, tbaleId and columnId was set to zero **/
+                if (schemaId == 1) {
+                    document.querySelector('database-visualizer-app').database = JSON.parse('{' +
+                        '"id": 0,' +
+                        '"schemas": [' +
+                            '{' +
+                                '"id": 0,' +
+                                '"name": "SCHEMA_1",' +
+                                '"schemaId": 1,' +
+                                '"left": 0,' +
+                                '"top": 0,' +
+                                '"width": 700,' +
+                                '"height": 300,' +
+                                '"tables": [' +
+                                    '{' +
+                                        '"id": 0,' +
+                                        '"name": "TABLE_1",' +
+                                        '"tableId": 0,' +
+                                        '"left": 22,' +
+                                        '"top": 30,' +
+                                        '"columns": [' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "TABLE_1_ID",' +
+                                                '"columnId": 1,' +
+                                                '"keyType": "PK",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "TABLE_2_ID",' +
+                                                '"columnId": 2,' +
+                                                '"keyType": "",' +
+                                                '"nullable": true,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '}' +
+                                        '],' +
+                                        '"constraints": [' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "FK_TABLE_1_TABLE_2",' +
+                                                '"isConnectedLeft": null,' +
+                                                '"isConnectedLeftRef": null,' +
+                                                '"schema": "SCHEMA_1",' +
+                                                '"table": "TABLE_1",' +
+                                                '"columns": [' +
+                                                    '"TABLE_2_ID"' +
+                                                '],' +
+                                                '"rschema": "SCHEMA_1",' +
+                                                '"rtable": "TABLE_2",' +
+                                                '"rcolumns": [' +
+                                                    '"TABLE_2_ID"' +
+                                                '],' +
+                                                '"positions":[]' +
+                                            '}' +
+                                        ']' +
+                                    '},' +
+                                    '{' +
+                                        '"id": 0,' +
+                                        '"name": "TABLE_2",' +
+                                        '"tableId": 0,' +
+                                        '"left": 420,' +
+                                        '"top": 30,' +
+                                        '"columns": [' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "TABLE_2_ID",' +
+                                                '"columnId": 1,' +
+                                                '"keyType": "PK",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "TABLE_3_ID",' +
+                                                '"columnId": 2,' +
+                                                '"keyType": "",' +
+                                                '"nullable": true,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '}' +
+                                        '],' +
+                                        '"constraints": [' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "FK_TABLE_2_TABLE_3",' +
+                                                '"isConnectedLeft": false,' +
+                                                '"isConnectedLeftRef": false,' +
+                                                '"schema": "SCHEMA_1",' +
+                                                '"table": "TABLE_2",' +
+                                                '"columns": [' +
+                                                    '"TABLE_3_ID"' +
+                                                '],' +
+                                                '"rschema": "SCHEMA_2",' +
+                                                '"rtable": "TABLE_3",' +
+                                                '"rcolumns": [' +
+                                                    '"TABLE_3_ID"' +
+                                                '],' +
+                                                '"positions":[{"id":0,"position":{"x":1130,"y":290}}]' +
+                                            '}' +
+                                        ']' +
+                                    '}' +
+                                ']' +
+                            '},' +
+                            '{' +
+                                '"id": 0,' +
+                                '"name": "SCHEMA_2",' +
+                                '"schemaId": 0,' +
+                                '"left": 800,' +
+                                '"top": 0,' +
+                                '"width": 400,' +
+                                '"height": 300,' +
+                                '"tables": [' +
+                                    '{' +
+                                        '"id": 0,' +
+                                        '"name": "TABLE_3",' +
+                                        '"tableId": 0,' +
+                                        '"left": 22,' +
+                                        '"top": 30,' +
+                                        '"columns": [' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "TABLE_3_ID",' +
+                                                '"columnId": 1,' +
+                                                '"keyType": "PK",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '}' +
+                                        '],' +
+                                        '"constraints": []' +
+                                    '}' +
+                                ']' +
+                            '}' +
+                        ']' +
+                    '}');
+                } else if (schemaId == 2) {
+                    document.querySelector('database-visualizer-app').database = JSON.parse('{' +
+                        '"id": 0,' +
+                        '"schemas": [' +
+                            '{' +
+                                '"id": 0,' +
+                                '"name": "DV_SHOWCASE",' +
+                                '"schemaId": 2,' +
+                                '"left": -2000,' +
+                                '"top": -1000,' +
+                                '"width": 2100,' +
+                                '"height": 630,' +
+                                '"tables": [' +
+                                    '{' +
+                                        '"id": 0,' +
+                                        '"name": "DV_SETUP",' +
+                                        '"tableId": 0,' +
+                                        '"left": 22,' +
+                                        '"top": 30,' +
+                                        '"columns": [' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "DV_SETUP_ID",' +
+                                                '"columnId": 1,' +
+                                                '"keyType": "PK",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "SCHEMA_ID",' +
+                                                '"columnId": 2,' +
+                                                '"keyType": "",' +
+                                                '"nullable": true,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '}' +
+                                        '],' +
+                                        '"constraints": []' +
+                                    '},' +
+                                    '{' +
+                                        '"id": 0,' +
+                                        '"name": "DV_SCHEMA",' +
+                                        '"tableId": 0,' +
+                                        '"left": 420,' +
+                                        '"top": 30,' +
+                                        '"columns": [' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "DV_SCHEMA_ID",' +
+                                                '"columnId": 1,' +
+                                                '"keyType": "PK",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "DV_SETUP_ID",' +
+                                                '"columnId": 2,' +
+                                                '"keyType": "",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "SCHEMA_ID",' +
+                                                '"columnId": 3,' +
+                                                '"keyType": "",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "HEIGHT",' +
+                                                '"columnId": 7,' +
+                                                '"keyType": "",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "LEFT",' +
+                                                '"columnId": 4,' +
+                                                '"keyType": "",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "TOP",' +
+                                                '"columnId": 5,' +
+                                                '"keyType": "",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "WIDTH",' +
+                                                '"columnId": 6,' +
+                                                '"keyType": "",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '}' +
+                                        '],' +
+                                        '"constraints": [' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "FK_DV_SCHEMA_DV_SETUP",' +
+                                                '"isConnectedLeft": null,' +
+                                                '"isConnectedLeftRef": null,' +
+                                                '"schema": "DV_SHOWCASE",' +
+                                                '"table": "DV_SCHEMA",' +
+                                                '"columns": [' +
+                                                    '"DV_SETUP_ID"' +
+                                                '],' +
+                                                '"rschema": "DV_SHOWCASE",' +
+                                                '"rtable": "DV_SETUP",' +
+                                                '"rcolumns": [' +
+                                                    '"DV_SETUP_ID"' +
+                                                '],' +
+                                                '"positions":[]' +
+                                            '}' +
+                                        ']' +
+                                    '},' +
+                                    '{' +
+                                        '"id": 0,' +
+                                        '"name": "DV_TABLE",' +
+                                        '"tableId": 0,' +
+                                        '"left": 825,' +
+                                        '"top": 30,' +
+                                        '"columns": [' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "DV_TABLE_ID",' +
+                                                '"columnId": 1,' +
+                                                '"keyType": "PK",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "TABLE_ID",' +
+                                                '"columnId": 3,' +
+                                                '"keyType": "",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "DV_SCHEMA_ID",' +
+                                                '"columnId": 2,' +
+                                                '"keyType": "",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "LEFT",' +
+                                                '"columnId": 4,' +
+                                                '"keyType": "",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "TOP",' +
+                                                '"columnId": 5,' +
+                                                '"keyType": "",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '}' +
+                                        '],' +
+                                        '"constraints": [' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "FK_DV_TABLE_DV_SCHEMA",' +
+                                                '"isConnectedLeft": null,' +
+                                                '"isConnectedLeftRef": null,' +
+                                                '"schema": "DV_SHOWCASE",' +
+                                                '"table": "DV_TABLE",' +
+                                                '"columns": [' +
+                                                    '"DV_SCHEMA_ID"' +
+                                                '],' +
+                                                '"rschema": "DV_SHOWCASE",' +
+                                                '"rtable": "DV_SCHEMA",' +
+                                                '"rcolumns": [' +
+                                                    '"DV_SCHEMA_ID"' +
+                                                '],' +
+                                                '"positions":[]' +
+                                            '}' +
+                                        ']' +
+                                    '},' +
+                                    '{' +
+                                        '"id": 0,' +
+                                        '"name": "DV_COLUMN",' +
+                                        '"tableId": 0,' +
+                                        '"left": 1255,' +
+                                        '"top": 30,' +
+                                        '"columns": [' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "DV_COLUMN_ID",' +
+                                                '"columnId": 1,' +
+                                                '"keyType": "PK",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "COLUMN_ID",' +
+                                                '"columnId": 3,' +
+                                                '"keyType": "",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "DV_TABLE_ID",' +
+                                                '"columnId": 2,' +
+                                                '"keyType": "",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '}' +
+                                        '],' +
+                                        '"constraints": [' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "FK_DV_COLUMN_DV_TABLE",' +
+                                                '"isConnectedLeft": null,' +
+                                                '"isConnectedLeftRef": null,' +
+                                                '"schema": "DV_SHOWCASE",' +
+                                                '"table": "DV_COLUMN",' +
+                                                '"columns": [' +
+                                                    '"DV_TABLE_ID"' +
+                                                '],' +
+                                                '"rschema": "DV_SHOWCASE",' +
+                                                '"rtable": "DV_TABLE",' +
+                                                '"rcolumns": [' +
+                                                    '"DV_TABLE_ID"' +
+                                                '],' +
+                                                '"positions":[]' +
+                                            '}' +
+                                        ']' +
+                                    '},' +
+                                    '{' +
+                                        '"id": 0,' +
+                                        '"name": "DV_CONSTRAINT",' +
+                                        '"tableId": 0,' +
+                                        '"left": 1255,' +
+                                        '"top": 350,' +
+                                        '"columns": [' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "DV_CONSTRAINT_ID",' +
+                                                '"columnId": 1,' +
+                                                '"keyType": "PK",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "CONSTRAINT_NAME",' +
+                                                '"columnId": 3,' +
+                                                '"keyType": "",' +
+                                                '"nullable": false,' +
+                                                '"type": "VARCHAR2(64)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "DV_TABLE_ID",' +
+                                                '"columnId": 2,' +
+                                                '"keyType": "",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '}' +
+                                        '],' +
+                                        '"constraints": [' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "FK_DV_CONSTRAINT_DV_TABLE",' +
+                                                '"isConnectedLeft": null,' +
+                                                '"isConnectedLeftRef": null,' +
+                                                '"schema": "DV_SHOWCASE",' +
+                                                '"table": "DV_CONSTRAINT",' +
+                                                '"columns": [' +
+                                                    '"DV_TABLE_ID"' +
+                                                '],' +
+                                                '"rschema": "DV_SHOWCASE",' +
+                                                '"rtable": "DV_TABLE",' +
+                                                '"rcolumns": [' +
+                                                    '"DV_TABLE_ID"' +
+                                                '],' +
+                                                '"positions":[]' +
+                                            '}' +
+                                        ']' +
+                                    '},' +
+                                    '{' +
+                                        '"id": 0,' +
+                                        '"name": "DV_CONSTRAINT_POS",' +
+                                        '"tableId": 0,' +
+                                        '"left": 1725,' +
+                                        '"top": 350,' +
+                                        '"columns": [' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "DV_CONSTRAINT_POS_ID",' +
+                                                '"columnId": 1,' +
+                                                '"keyType": "PK",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "DV_CONSTRAINT_ID",' +
+                                                '"columnId": 2,' +
+                                                '"keyType": "",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "X",' +
+                                                '"columnId": 3,' +
+                                                '"keyType": "",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "Y",' +
+                                                '"columnId": 4,' +
+                                                '"keyType": "",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '},' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "ORDER_ID",' +
+                                                '"columnId": 5,' +
+                                                '"keyType": "",' +
+                                                '"nullable": false,' +
+                                                '"type": "NUMBER(22)",' +
+                                                '"defaultValue": ""' +
+                                            '}' +
+                                        '],' +
+                                        '"constraints": [' +
+                                            '{' +
+                                                '"id": 0,' +
+                                                '"name": "FK_DV_CONSTRAINT_POS_DV_CONS",' +
+                                                '"isConnectedLeft": null,' +
+                                                '"isConnectedLeftRef": null,' +
+                                                '"schema": "DV_SHOWCASE",' +
+                                                '"table": "DV_CONSTRAINT_POS",' +
+                                                '"columns": [' +
+                                                    '"DV_CONSTRAINT_ID"' +
+                                                '],' +
+                                                '"rschema": "DV_SHOWCASE",' +
+                                                '"rtable": "DV_CONSTRAINT",' +
+                                                '"rcolumns": [' +
+                                                    '"DV_CONSTRAINT_ID"' +
+                                                '],' +
+                                                '"positions":[]' +
+                                            '}' +
+                                        ']' +
+                                    '}' +
+                                ']' +
+                            '}' +
+                        ']' +
+                    '}');
+                }
+            }, 1000);
+        });
+
+        document.querySelector('database-visualizer-app').addEventListener('update-schema', function (e) {
+            console.log("dragged/resized schema: " + e.detail);
+            console.log(e.detail);
+        });
+        document.querySelector('database-visualizer-app').addEventListener('update-table', function (e) {
+            console.log("dragged table: " + e.detail);
+            console.log(e.detail);
+        });
+        document.querySelector('database-visualizer-app').addEventListener('update-constraint', function (e) {
+            console.log("dragged constraint: " + e.detail);
+            console.log(e.detail);
+        });
+</script>
+</html>
